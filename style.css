@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #080808;
+  color: #00ff41;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(12px, 2.5vw, 20px);
+  margin-bottom: 32px;
+}
+
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* HERO — taustapilt + overlay */
+#avaleht {
+  min-height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  max-width: 100%;
+  padding-bottom: 60px;
+}
+
+#avaleht::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.83);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(28px, 6vw, 56px);
+  text-shadow: 0 0 24px #00ff41;
+  margin-bottom: 16px;
+}
+
+.hero-content p { color: #777; margin-bottom: 28px; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 1px solid #00ff41;
+  color: #00ff41;
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  transition: background .15s, color .15s, transform .1s;
+}
+
+.btn:hover { background: #00ff41; color: #000; transform: scale(1.05); }
+
+/* TUTVUSTUS — Flexbox kaardid */
+.prose p {
+  color: #888;
+  font-size: 15px;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+.prose em { color: #00ff41; font-style: normal; }
+
+/* GALERII — CSS Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: grayscale(50%) hue-rotate(80deg);
+  border: 1px solid #003b10;
+  transition: filter .2s, transform .2s;
+}
+
+.grid img:hover { filter: none; transform: scale(1.03); border-color: #00ff41; }
+
+/* VIDEO */
+.video-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border: 1px solid #003b10;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* KONTAKT */
+#kontakt p { color: #555; margin-bottom: 20px; }
+
+.links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.links a {
+  padding: 10px 18px;
+  border: 1px solid #00aa2a;
+  color: #00aa2a;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+
+.links a:hover { background: #00ff41; color: #000; border-color: #00ff41; }
+
+/* NAV — fikseeritud all */
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  border-top: 1px solid #003b10;
+  z-index: 100;
+}
+
+#toggle { display: none; }
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: #00aa2a;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-right: 1px solid #111;
+  transition: background .15s, color .15s;
+}
+
+nav ul li:last-child a { border-right: none; }
+nav ul li a:hover { background: #00ff41; color: #000; }
+
+/* MOBIIL */
+@media (max-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+
+  #toggle {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    background: none;
+    border: none;
+    color: #00ff41;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+  }
+
+  #toggle:hover { background: #003b10; }
+
+  /* Menüü expandib ülespoole */
+  nav ul {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+
+  nav ul.open { max-height: 260px; }
+
+  nav ul li a { border-right: none; border-top: 1px solid #111; text-align: center; }
+}
