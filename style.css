@@ -71,7 +71,7 @@ section {
 
 .btn:hover { background: #00ff41; color: #000; transform: scale(1.05); }
 
-/* TUTVUSTUS — Flexbox kaardid */
+/* TUTVUSTUS */
 .prose p {
   color: #888;
   font-size: 15px;
